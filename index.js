@@ -20,3 +20,22 @@ async function fetchGif(gif = initialGif) {
 		console.error(error);
 	}
 }
+
+async function handleQuery(event) {
+	event.preventDefault();
+
+	const formData = new FormData();
+	const query = formData.values();
+
+	const {
+		slug,
+		file: {
+			hd: {
+				gif: { url },
+			},
+		},
+	} = await fetchGif(query);
+
+	img.alt = slug;
+	img.src = url;
+}
