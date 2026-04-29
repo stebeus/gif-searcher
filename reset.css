@@ -1,0 +1,109 @@
+/* CSS DIRECTORY
+	1. DOCUMENT
+	2. FORMS
+	3. MEDIA
+	4. TYPOGRAPHY
+*/
+
+/* || DOCUMENT */
+
+*,
+::before,
+::after,
+::backdrop,
+::file-selector-button {
+	box-sizing: border-box;
+}
+
+*,
+::file-selector-button {
+	padding: 0;
+	line-height: calc(2px + 2ex + 2px); /* Use smarter and accessible line heights */
+
+	&:not(dialog) {
+		margin: 0;
+	}
+}
+
+html {
+	tab-size: 4; /* Use a more readable tab size */
+	color-scheme: light dark;
+}
+
+#root {
+	min-block-size: 100svb;
+	isolation: isolate; /* Fix z-index issues | https://www.joshwcomeau.com/css/stacking-contexts/ */
+}
+
+/* || FORMS */
+
+::file-selector-button,
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: currentColor;
+}
+
+::file-selector-button,
+button,
+input:is([type='checkbox'], [type='radio']),
+label,
+select {
+	cursor: pointer;
+}
+
+/* || MEDIA */
+
+audio,
+canvas,
+iframe,
+img,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	font-style: italic; /* Distinguish alt text from normal content */
+}
+
+/* || TYPOGRAPHY */
+
+a {
+	color: currentColor;
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	overflow-wrap: break-word;
+}
+
+ul {
+	list-style-type: ''; /* Remove list style without affecting semantics in Safari */
+}
+
+@supports (text-wrap: balance) and (text-wrap: pretty) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+}
