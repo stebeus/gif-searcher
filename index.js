@@ -28,6 +28,7 @@ async function handleQuery(event) {
 	const query = formData.values();
 
 	const {
+		title,
 		slug,
 		file: {
 			hd: {
@@ -36,6 +37,7 @@ async function handleQuery(event) {
 		},
 	} = await fetchGif(query);
 
+	gifTitle.textContent = title;
 	img.alt = slug;
 	img.src = url;
 }
