@@ -26,7 +26,7 @@ function setGif(img, gifTitle, url, title) {
 	gifTitle.textContent = title;
 }
 
-async function renderGif(gifTitle, img, query) {
+async function renderGif(img, gifTitle, query) {
 	const {
 		title,
 		file: {
@@ -46,7 +46,7 @@ function handleQuery(event) {
 	setGif(img, gifTitle, loader, 'Loading...');
 
 	const query = document.querySelector('#query').value;
-	renderGif(gifTitle, img, query);
+	renderGif(img, gifTitle, query);
 }
 
 form.addEventListener('submit', handleQuery);
