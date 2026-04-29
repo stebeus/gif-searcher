@@ -26,7 +26,7 @@ async function fetchGif(gif) {
 	}
 }
 
-const isQueryEmpty = (query) => query == null || query.match(/^ *$/);
+const isQueryEmpty = (query) => query.trim() === '';
 
 async function handleQuery(event) {
 	event.preventDefault();
