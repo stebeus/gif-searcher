@@ -21,7 +21,7 @@ async function fetchGif(gif = initialGif) {
 	}
 }
 
-async function setGif(gifTitle, image, query) {
+async function setGif(gifTitle, img, query) {
 	const {
 		title,
 		file: {
@@ -32,7 +32,7 @@ async function setGif(gifTitle, image, query) {
 	} = await fetchGif(query);
 
 	gifTitle.textContent = title;
-	image.src = url;
+	img.src = url;
 }
 
 function handleQuery(event) {
