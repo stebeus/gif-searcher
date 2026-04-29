@@ -39,3 +39,5 @@ async function handleQuery(event) {
 	img.alt = slug;
 	img.src = url;
 }
+
+form.addEventListener('submit', handleQuery);
