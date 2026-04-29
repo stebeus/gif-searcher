@@ -24,7 +24,6 @@ async function fetchGif(gif = initialGif) {
 async function setGif(gifTitle, image, query) {
 	const {
 		title,
-		slug,
 		file: {
 			hd: {
 				gif: { url },
@@ -34,7 +33,6 @@ async function setGif(gifTitle, image, query) {
 
 	gifTitle.textContent = title;
 	image.src = url;
-	image.alt = slug;
 }
 
 function handleQuery(event) {
