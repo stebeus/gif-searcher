@@ -1,4 +1,5 @@
 const form = document.querySelector('form');
+const gifTitle = document.querySelector('h2');
 const img = document.querySelector('img');
 
 const initialGif = 'sonic-waiting-1';
