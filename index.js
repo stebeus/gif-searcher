@@ -39,10 +39,7 @@ async function setGif(gifTitle, image, query) {
 
 function handleQuery(event) {
 	event.preventDefault();
-
-	const formData = new FormData();
-	const query = formData.values();
-
+	const query = document.querySelector('#query').value;
 	setGif(gifTitle, img, query);
 }
 
