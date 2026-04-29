@@ -21,7 +21,12 @@ async function fetchGif(gif = initialGif) {
 	}
 }
 
-async function setGif(gifTitle, img, query) {
+function setGif(img, gifTitle, url, title) {
+	img.src = url;
+	gifTitle.textContent = title;
+}
+
+async function renderGif(gifTitle, img, query) {
 	const {
 		title,
 		file: {
@@ -31,16 +36,19 @@ async function setGif(gifTitle, img, query) {
 		},
 	} = await fetchGif(query);
 
-	gifTitle.textContent = title;
-	img.src = url;
+	setGif(img, gifTitle, url, title);
 }
 
 function handleQuery(event) {
 	event.preventDefault();
+
+	const loader = '/sonic-ring.gif';
+	setGif(img, gifTitle, loader, 'Loading...');
+
 	const query = document.querySelector('#query').value;
-	setGif(gifTitle, img, query);
+	renderGif(gifTitle, img, query);
 }
 
 form.addEventListener('submit', handleQuery);
 
-setGif(gifTitle, img);
+renderGif(gifTitle, img);
