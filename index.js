@@ -1,5 +1,4 @@
 const searchBar = document.querySelector('.search-bar');
-
 const initialGifPath = '/sonic-waiting.gif';
 
 const isQueryEmpty = (query) => query.trim() === '';
