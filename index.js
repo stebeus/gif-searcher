@@ -1,16 +1,21 @@
-const form = document.querySelector('form');
-const gifTitle = document.querySelector('h2');
-const img = document.querySelector('img');
+const searchBar = document.querySelector('.search-bar');
 
-const initialGif = 'sonic-waiting-1';
+const initialGifPath = '/sonic-waiting.gif';
 
-async function fetchGif(gif = initialGif) {
+function renderGif(gifTitle = 'Waiting for your query...', gifUrl = initialGifPath) {
+	const title = document.querySelector('.title');
+	const img = document.querySelector('img');
+
+	title.textContent = gifTitle;
+	img.src = gifUrl;
+}
+
+async function fetchGif(gif) {
 	const apiKey = '6OXtOEb9inKrHI7HYhBObJYoDTLSpfN139Gm6AXrX4l96Tb4IbPJ6vIczCDg6PRp';
-	const apiUrl = `https://api.klipy.com/api/v1/${apiKey}/gifs/search?per_page=8&q=${gif}`;
+	const url = `https://api.klipy.com/api/v1/${apiKey}/gifs/search?per_page=8&q=${gif}`;
 
 	try {
-		const response = await fetch(apiUrl);
-
+		const response = await fetch(url);
 		const {
 			data: { data },
 		} = await response.json();
@@ -21,12 +26,23 @@ async function fetchGif(gif = initialGif) {
 	}
 }
 
-function setGif(img, gifTitle, url, title) {
-	img.src = url;
-	gifTitle.textContent = title;
-}
+const isQueryEmpty = (query) => query == null || query.match(/^ *$/);
 
-async function renderQuery(img, gifTitle, query) {
+async function handleQuery(event) {
+	event.preventDefault();
+
+	const query = document.querySelector('#query').value;
+
+	searchBar.reset();
+
+	if (isQueryEmpty(query)) {
+		renderGif();
+		return;
+	}
+
+	const loaderGifPath = '/sonic-ring.gif';
+	renderGif('Loading...', loaderGifPath);
+
 	const {
 		title,
 		file: {
@@ -35,20 +51,8 @@ async function renderQuery(img, gifTitle, query) {
 			},
 		},
 	} = await fetchGif(query);
-
-	setGif(img, gifTitle, url, title);
+	renderGif(title, url);
 }
 
-function handleQuery(event) {
-	event.preventDefault();
-
-	const loader = '/sonic-ring.gif';
-	setGif(img, gifTitle, loader, 'Loading...');
-
-	const query = document.querySelector('#query').value;
-	renderQuery(img, gifTitle, query);
-}
-
-form.addEventListener('submit', handleQuery);
-
-renderQuery(img, gifTitle);
+searchBar.addEventListener('submit', handleQuery);
+renderGif();
