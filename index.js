@@ -18,10 +18,12 @@ async function fetchGif(gif) {
 	try {
 		const response = await fetch(url);
 		const {
-			data: { data },
+			data: {
+				data: [data],
+			},
 		} = await response.json();
 
-		return data[0];
+		return data;
 	} catch (error) {
 		console.error(error);
 	}
