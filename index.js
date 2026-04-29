@@ -47,3 +47,5 @@ function handleQuery(event) {
 }
 
 form.addEventListener('submit', handleQuery);
+
+setGif(gifTitle, img);
