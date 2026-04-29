@@ -1,7 +1,7 @@
 const searchBar = document.querySelector('.search-bar');
 const initialGifPath = '/sonic-waiting.gif';
 
-const isQueryEmpty = (query) => query.trim() === '';
+const isEmpty = (query) => query.trim() === '';
 
 function renderGif(gifTitle = 'Waiting for your query...', gifUrl = initialGifPath) {
 	const title = document.querySelector('.title');
@@ -36,7 +36,7 @@ async function handleQuery(event) {
 
 	searchBar.reset();
 
-	if (isQueryEmpty(query)) {
+	if (isEmpty(query)) {
 		renderGif();
 		return;
 	}
