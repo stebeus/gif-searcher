@@ -21,12 +21,7 @@ async function fetchGif(gif = initialGif) {
 	}
 }
 
-async function handleQuery(event) {
-	event.preventDefault();
-
-	const formData = new FormData();
-	const query = formData.values();
-
+async function setGif(gifTitle, image, query) {
 	const {
 		title,
 		slug,
@@ -38,8 +33,17 @@ async function handleQuery(event) {
 	} = await fetchGif(query);
 
 	gifTitle.textContent = title;
-	img.alt = slug;
-	img.src = url;
+	image.src = url;
+	image.alt = slug;
+}
+
+function handleQuery(event) {
+	event.preventDefault();
+
+	const formData = new FormData();
+	const query = formData.values();
+
+	setGif(gifTitle, img, query);
 }
 
 form.addEventListener('submit', handleQuery);
