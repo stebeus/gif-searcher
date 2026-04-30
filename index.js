@@ -3,12 +3,12 @@ const initialGifPath = '/sonic-waiting.gif';
 
 const isEmpty = (query) => query.trim() === '';
 
-function renderGif(gifTitle = 'Waiting for your query...', gifUrl = initialGifPath) {
-	const title = document.querySelector('h2');
+function renderGif(title = 'Waiting for your query...', url = initialGifPath) {
+	const gifTitle = document.querySelector('h2');
 	const img = document.querySelector('img');
 
-	title.textContent = gifTitle;
-	img.src = gifUrl;
+	gifTitle.textContent = title;
+	img.src = url;
 }
 
 async function fetchGif(gif) {
