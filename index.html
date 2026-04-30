@@ -11,15 +11,39 @@
 	</head>
 	<body>
 		<div id="root">
-			<h1>GIF Searcher</h1>
-			<form class="search-bar">
-				<input type="search" id="query" placeholder="Waiting for your query...">
-				<button type="submit">Search</button>
-			</form>
-			<section class="gif">
-				<img src="" alt="">
-				<h2></h2>
-			</section>
+			<main>
+				<h1>GIF Searcher</h1>
+				<form class="search-bar">
+					<input type="search" id="query" placeholder="Search KLIPY...">
+					<button type="submit">
+						<svg class="svg-icon" width="24" height="24">
+							<title>Search</title>
+							<use href="/icons.svg#search-icon" />
+						</svg>
+					</button>
+				</form>
+				<article class="gif">
+					<img src="" alt="GIF" width="240" height="240">
+					<a class="watermark" href="https://klipy.com/" target="_blank" rel="noopener noreferrer">
+						<img src="/klipy-watermark.svg" alt="KLIPY website" width="100" height="100">
+					</a>
+					<h2></h2>
+				</article>
+			</main>
+			<footer>
+				<p class="copyright">
+					© Stebeus 2026.
+					<a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer">
+						MIT License
+					</a>
+				</p>
+				<a href="https://github.com/stebeus" target="_blank" rel="noopener noreferrer">
+					<svg class="svg-icon" width="24" height="24">
+						<title>GitHub</title>
+						<use href="/icons.svg#github-icon" />
+					</svg>
+				</a>
+			</footer>
 		</div>
 	</body>
 </html>
