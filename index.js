@@ -4,7 +4,7 @@ const initialGifPath = '/sonic-waiting.gif';
 const isEmpty = (query) => query.trim() === '';
 
 function renderGif(gifTitle = 'Waiting for your query...', gifUrl = initialGifPath) {
-	const title = document.querySelector('.title');
+	const title = document.querySelector('h2');
 	const img = document.querySelector('img');
 
 	title.textContent = gifTitle;
